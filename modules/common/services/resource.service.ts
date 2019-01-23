@@ -4,14 +4,14 @@ import { map, concatMap } from 'rxjs/operators';
 
 export abstract class ResourceService {
 
-    model: any;
+    model: Document | any;
 
     /**
      * @method findByParams
      * @param {object} params 
      * @return {Observable<Document[]>}
      */
-    public findByParams(params: object): Observable<Document[]> {
+    public findByParams(params: object): Observable<any[]> {
         return from(this.model.find(params));
     }
 

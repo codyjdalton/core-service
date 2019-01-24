@@ -41,12 +41,16 @@ export class PersonService extends ResourceService {
      * @TODO Validate email, password
      * @TODO Hash password prior to storage
      */
-     public create(email: string, password: string, name: string): Observable<IPerson> {
+     public create(body: {
+         email: string;
+         password: string;
+         name: string;
+     }): Observable<IPerson> {
         const aPerson: IPerson = new Person({
             id: uuid.v4(),
-            email: email,
-            password: password,
-            name: name
+            email: body.email,
+            password: body.password,
+            name: body.name
         });
 
         return from(aPerson.save());

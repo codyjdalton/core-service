@@ -31,7 +31,7 @@ describe('Service:PersonService', () => {
             password: 'secret-key'
         };
 
-        service.create(aPerson.email, aPerson.password, aPerson.name)
+        service.create(aPerson)
             .subscribe(
                 (result: IPerson) => {
                     expect(Boolean(result.id)).to.be.true;
@@ -48,8 +48,14 @@ describe('Service:PersonService', () => {
         const testEmail: string = 'testemail@gmail.com';
         const testPass: string = 'test password';
 
+        const aBody = {
+            email: testEmail,
+            password: testPass,
+            name: 'test name'
+        };
+    
         let anItem: IPerson;
-        service.create(testEmail, testPass, 'test name')
+        service.create(aBody)
             .pipe(
                 tap((item: IPerson) => anItem = item),
                 concatMap(() => service.findByEmailAndPassword(testEmail, testPass))
@@ -58,8 +64,9 @@ describe('Service:PersonService', () => {
                 (results: IPerson[]) => {
                     expect(results[0].id).equals(anItem.id);
                     done();
-                }
-            );
+                },
+                err => console.error(err)
+            )
     });
 });
 

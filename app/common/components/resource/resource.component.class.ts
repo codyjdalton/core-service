@@ -1,6 +1,6 @@
 
 import { HttpResponse, HttpRequest } from '@litstack/core/dist/http';
-import { GetMapping, DeleteMapping } from '@litstack/core/dist/http/mappings';
+import { GetMapping, DeleteMapping, PostMapping } from '@litstack/core/dist/http/mappings';
 import { Document } from "mongoose";
 
 import { ResourceService } from '../../services/resource.service';

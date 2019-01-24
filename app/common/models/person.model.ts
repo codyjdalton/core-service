@@ -19,7 +19,6 @@ export const PersonSchema = new Schema({
         required: true,
     },
     password: { // should always be hashed before persisting
-        unique: true,
         type: String,
         required: true,
     },

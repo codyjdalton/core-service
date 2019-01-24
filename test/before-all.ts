@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { SpecConstants } from '../modules/spec.constants';
+import { SpecConstants } from '../app/spec.constants';
 
 mongoose.set('useCreateIndex', true);
 

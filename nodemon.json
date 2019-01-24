@@ -1,4 +1,4 @@
 {
-    "watch": ["modules/"],
+    "watch": ["app/"],
     "ext": "ts"
 }

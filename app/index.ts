@@ -2,8 +2,8 @@
 import { LitCompiler } from '@litstack/core/dist/compiler';
 import * as mongoose from 'mongoose';
 
-import { AppConstants } from './modules/app.constants';
-import { AppModule } from './modules/app.module';
+import { AppConstants } from './app.constants';
+import { AppModule } from './app.module';
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(

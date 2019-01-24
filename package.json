@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm test; tsc && node dist/index.js",
+    "start": "npm test; tsc && node dist/app/index.js",
     "test": "nyc mocha test/before-all.ts test/",
     "watch": "nodemon --exec npm start"
   },

@@ -11,5 +11,5 @@ import { PeopleComponent } from './people.component';
     ]
 })
 export class PeopleModule {
-
+    
 }

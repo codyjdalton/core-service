@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm test; tsc && node dist/app/index.js",
+    "start": "tsc && node dist/app/index.js",
     "test": "nyc mocha test/before-all.ts test/",
-    "watch": "nodemon --exec npm start"
+    "watch": "nodemon --exec npm test"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,8 @@
     "super-injector": "^1.0.4",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",

@@ -8,7 +8,8 @@
             "dom"
         ],
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "alwaysStrict": true
     },
     "exclude": [
         "dist",

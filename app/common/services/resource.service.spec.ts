@@ -12,7 +12,7 @@ describe('Service:ResourceService', () => {
     class ResourceServiceStub extends ResourceService {
         model: Model<IResource> = Resource;
 
-        create(id: string, name: string) {
+        createTest(id: string, name: string) {
 
             const aNarrative: IResource = new Resource({
                 id: id,
@@ -45,7 +45,7 @@ describe('Service:ResourceService', () => {
             name: 'test name'
         };
 
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 () => {
                     // verify the item is returned
@@ -91,7 +91,7 @@ describe('Service:ResourceService', () => {
 
         const expectedName: string = 'test name 2';
 
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 (res) => {
 
@@ -110,7 +110,7 @@ describe('Service:ResourceService', () => {
 
     it('should NOT allow updating the id of a record', (done) => {
 
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 (res) => {
 
@@ -128,7 +128,7 @@ describe('Service:ResourceService', () => {
     });
 
     it('should allow finding an item by id', (done) => {
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 (res) => {
                     
@@ -144,7 +144,7 @@ describe('Service:ResourceService', () => {
     });
 
     it('should err if no item is found', (done) => {
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 (res) => {
                     service.findById('test-id-1')
@@ -160,7 +160,7 @@ describe('Service:ResourceService', () => {
     });
 
     it('should allow removing an item by id', (done) => {
-        service.create('test-id', 'test name')
+        service.createTest('test-id', 'test name')
             .subscribe(
                 (res) => {
                     service.deleteById('test-id')
@@ -178,6 +178,16 @@ describe('Service:ResourceService', () => {
                         );
                 });
 
+    });
+
+    it('should stub a create method', (done) => {
+        service.create({})
+            .subscribe(
+                result => {
+                    expect(result).to.equal(null);
+                    done();
+                }
+            )
     });
 });
 

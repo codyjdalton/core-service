@@ -1,6 +1,7 @@
 import { Model, Document } from "mongoose";
 import { Observable, from, of } from "rxjs";
 import { map, concatMap } from 'rxjs/operators';
+import { IResource } from "../models/resource.model";
 
 export abstract class ResourceService {
 
@@ -64,9 +65,18 @@ export abstract class ResourceService {
      * @param {string} id
      * @return {Observable<any>}
      */
-    public deleteById(id: string): Observable<any> {
+    public deleteById(id: string): Observable<Document> {
         return from(this.model.findOne({ id: id })).pipe(
             concatMap((item: Document) => from(item.remove())),
         );
+    }
+
+    /**
+     * @method create
+     * @param {any} body - should be an object
+     * Description - Used purely as a stub
+     */
+    public create(body: any): Observable<Document> {
+        return of(null);
     }
 }

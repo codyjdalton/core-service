@@ -3,6 +3,7 @@ import { LitModule } from '@litstack/core';
 
 import { AppComponent } from './app.component';
 import { MiddlewaresModule } from './middlewares/middlewares.module';
+import { PeopleModule } from './modules/people/people.module';
 
 @LitModule({
     exports: [
@@ -10,6 +11,7 @@ import { MiddlewaresModule } from './middlewares/middlewares.module';
     ],
     imports: [
         MiddlewaresModule,
+        PeopleModule,
     ]
 })
 export class AppModule {

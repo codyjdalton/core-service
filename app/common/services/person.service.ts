@@ -3,7 +3,7 @@
  */
 import { LitService } from '@litstack/core';
 import { Model } from 'mongoose';
-import { from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 
 import * as uuid from 'uuid';
 
@@ -51,7 +51,7 @@ export class PersonService extends ResourceService {
         const aPerson: IPerson = new Person({
             id: uuid.v4(),
             email: params.email,
-            password: sha256(params.password),
+            password: params.password ? sha256(params.password) : null,
             name: params.name
         });
 

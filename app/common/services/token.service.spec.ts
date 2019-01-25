@@ -1,12 +1,11 @@
 
 import { expect } from 'chai';
 import { Injector } from 'super-injector';
-import { concatMap, tap, map, switchMap, concatMapTo } from 'rxjs/operators';
+import * as jwt from 'jsonwebtoken';
 
 import { PersonService } from './person.service';
 import { Person, IPerson } from '../../common/models/person.model';
 import { TokenService } from './token.service';
-import { of, concat } from 'rxjs';
 
 
 describe('Service:TokenService', () => {
@@ -39,9 +38,15 @@ describe('Service:TokenService', () => {
                 (person: IPerson) => {
                     service.create(aPerson.email, aPerson.password)
                         .subscribe(
-                            t => done(),
+                            t => {
+                                // validate token
+                                if(!jwt.verify(t, process.env.JWT_SECRET)) {
+                                    done(new Error('Invalid JWT generated'))
+                                }
+                                done();
+                            },
                             e => {
-                                throw Error('Valid token was not created')
+                                done(new Error('Valid token was not created'))
                             }
                         )
                 }

@@ -37,7 +37,9 @@ export class TokenService {
      */
     private getTokenFromPerson(person: IPerson): string {
         return jwt.sign({
-            exp: Math.floor(Date.now() / 1000) + (60 * 60)
+            exp: Math.floor(Date.now() / 1000) + (60 * 60),
+            sub: person.id,
+            name: person.name
         }, AppConstants.JWT_SECRET);
     }
 }

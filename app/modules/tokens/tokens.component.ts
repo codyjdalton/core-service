@@ -13,11 +13,11 @@ export class TokensComponent  {
     constructor(private tokenService: TokenService) {
     }
 
-    @GetMapping()
+    @PostMapping()
     launch(req: HttpRequest, res: HttpResponse) {
 
-        const email: string = req.query.email;
-        const password: string = req.query.password;
+        const email: string = req.body.email;
+        const password: string = req.body.password;
         
         this.tokenService.create(email, password)
             .subscribe(

@@ -44,6 +44,23 @@ describe('Service:PersonService', () => {
             );
     });
 
+    it('should fail without required fields', (done) => {
+
+        const aPerson = {
+            email: 'testemail@gmail.com',
+            name: 'test user',
+            password: null
+        };
+
+        service.create(aPerson)
+            .subscribe(
+                (result: IPerson) => {
+                    done('ERROR: Created a person without valid fields');
+                },
+                err => done()
+            );
+    });
+
     it('should allow searching for a person by email and password', (done) => {
 
         const testEmail: string = 'testemail@gmail.com';

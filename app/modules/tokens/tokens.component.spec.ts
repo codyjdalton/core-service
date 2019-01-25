@@ -35,9 +35,9 @@ describe('TokensComponent', () => {
         personService.create(aPerson)
             .subscribe(
                 () => {
-                    component.get('/')
+                    component.post('/')
+                        .send({ email: aPerson.email, password: aPerson.password })
                         .expect(201)
-                        .query({ email: aPerson.email, password: aPerson.password })
                         .end((err, res) => {
                             if (err) return done(err);
                             done();
@@ -51,8 +51,8 @@ describe('TokensComponent', () => {
         personService.create(aPerson)
             .subscribe(
                 () => {
-                    component.get('/')
-                        .query({ email: aPerson.email, password: 'wrong password' })
+                    component.post('/')
+                        .send({ email: aPerson.email, password: 'wrong password' })
                         .expect(400)
                         .expect((res) => {
                             expect(Boolean(res.body.message)).to.be.true;

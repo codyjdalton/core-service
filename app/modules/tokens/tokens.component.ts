@@ -26,7 +26,7 @@ export class TokensComponent  {
                         jwt: token
                     });
                 },
-                err => res.errored(400)
+                (e: string) => res.errored(400, { message: e })
             );
     }
 }

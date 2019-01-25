@@ -25,7 +25,7 @@ export class TokenService {
             .pipe(
                 mergeMap(
                     (people) => people && people.length < 1
-                    ? throwError('Unable to find email/password combination')
+                    ? throwError(AppConstants.EMAIL_PASSWORD_INCORRECT)
                     : of(this.getTokenFromPerson(people[0]))
                 )
             );

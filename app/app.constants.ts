@@ -3,6 +3,8 @@ export const AppConstants = {
 
     DATASOURCE: process.env.DATASOURCE,
 
+    JWT_SECRET: process.env.JWT_SECRET,
+
     // content types
     MESSAGE_V1: 'application/vnd.message.v1+json',
 

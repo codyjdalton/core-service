@@ -3,11 +3,13 @@
  */
 import { LitService } from '@litstack/core';
 import { Model } from 'mongoose';
-import { from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
+
 import * as uuid from 'uuid';
 
 import { Person, IPerson } from '../../common/models/person.model';
 import { ResourceService } from './resource.service';
+import { sha256 } from '../utils/sha256.util';
 
 @LitService()
 export class PersonService extends ResourceService {
@@ -28,7 +30,7 @@ export class PersonService extends ResourceService {
     public findByEmailAndPassword(email: string, password: string): Observable<IPerson[]> {
         return this.findByParams({
             email: email,
-            password: password
+            password: sha256(password)
         });
     }
 
@@ -41,16 +43,16 @@ export class PersonService extends ResourceService {
      * @TODO Validate email, password
      * @TODO Hash password prior to storage
      */
-     public create(body: {
+     public create(params: {
          email: string;
          password: string;
          name: string;
      }): Observable<IPerson> {
         const aPerson: IPerson = new Person({
             id: uuid.v4(),
-            email: body.email,
-            password: body.password,
-            name: body.name
+            email: params.email,
+            password: params.password ? sha256(params.password) : null,
+            name: params.name
         });
 
         return from(aPerson.save());

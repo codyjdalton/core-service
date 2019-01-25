@@ -10,10 +10,10 @@ import { ResourceComponent } from '../../common/components/resource/resource.com
 import { IPerson } from '../../common/models/person.model';
 
 @LitComponent()
-export class PeopleComponent extends ResourceComponent  {
+export class PeopleComponent  {
 
     constructor(protected mainService: PersonService) {
-        super();
+        // super();
     }
 
     @PostMapping()

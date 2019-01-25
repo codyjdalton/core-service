@@ -10,4 +10,5 @@ export const AppConstants = {
 
     // messages
     WELCOME_MESSAGE: 'Hello, you have reached the service',
+    EMAIL_PASSWORD_INCORRECT: 'Unable to find email/password combination'
 };

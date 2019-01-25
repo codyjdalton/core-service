@@ -5,6 +5,7 @@ import { concatMap, tap } from 'rxjs/operators';
 
 import { Person, IPerson } from '../../common/models/person.model';
 import { PersonService } from './person.service';
+import { sha256 } from '../utils/sha256.util';
 
 describe('Service:PersonService', () => {
 
@@ -37,7 +38,7 @@ describe('Service:PersonService', () => {
                     expect(Boolean(result.id)).to.be.true;
                     expect(result.email).to.equal(aPerson.email);
                     expect(result.name).to.equal(aPerson.name);
-                    expect(result.password).to.equal(aPerson.password);
+                    expect(result.password).to.equal(sha256(aPerson.password));
                     done();
                 }
             );

@@ -5,7 +5,7 @@ import { IResource } from "../models/resource.model";
 
 export abstract class ResourceService {
 
-    model: Document | any;
+    model: any | Document;
 
     /**
      * @method findByParams
@@ -13,7 +13,9 @@ export abstract class ResourceService {
      * @return {Observable<Document[]>}
      */
     public findByParams(params: object): Observable<any[]> {
-        return from(this.model.find(params));
+        return from(
+            this.model.find(params)
+        );
     }
 
     /**

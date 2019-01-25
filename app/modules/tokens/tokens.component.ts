@@ -24,7 +24,7 @@ export class TokensComponent  {
                 (token: string) => {
                     res.success({
                         jwt: token
-                    });
+                    }, 201);
                 },
                 (e: string) => res.errored(400, { message: e })
             );

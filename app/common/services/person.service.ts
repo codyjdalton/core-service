@@ -48,10 +48,6 @@ export class PersonService extends ResourceService {
          password: string;
          name: string;
      }): Observable<IPerson> {
-        /**
-         * @TODO find out why this needs to be any
-         * for heroku success
-         */
         const aPerson: IPerson = new Person({
             id: uuid.v4(),
             email: params.email,

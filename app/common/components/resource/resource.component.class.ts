@@ -9,16 +9,14 @@ export abstract class ResourceComponent {
 
     protected mainService: ResourceService;
 
-    @GetMapping()
-    public findAll(res: HttpResponse): void {
+    /*
+    protected findAll(res: HttpResponse): void {
         this.mainService.findAll()
             .subscribe((items: Document[]) => res.success(items));
     }
 
-    @GetMapping({
-        path: ':id'
-    })
-    public findOne(req: HttpRequest, res: HttpResponse): void {
+
+    protected findOne(req: HttpRequest, res: HttpResponse): void {
         this.mainService.findById(req.params.id)
             .subscribe(
                 (item: Document) => res.success(item),
@@ -26,14 +24,11 @@ export abstract class ResourceComponent {
             );
     }
 
-    @DeleteMapping({
-        path: ':id'
-    })
-    public deleteById(req: HttpRequest, res: HttpResponse): void {
+    protected deleteById(req: HttpRequest, res: HttpResponse): void {
         this.mainService.deleteById(req.params.id)
             .subscribe(
                 () => res.success({}, 204),
                 () => res.errored(404)
             );
-    }
+    } */
 }

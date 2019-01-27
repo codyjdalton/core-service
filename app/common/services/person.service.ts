@@ -52,7 +52,7 @@ export class PersonService extends ResourceService {
          * @TODO find out why this needs to be any
          * for heroku success
          */
-        const aPerson: any = new Person({
+        const aPerson: IPerson = new Person({
             id: uuid.v4(),
             email: params.email,
             password: params.password ? sha256(params.password) : null,

@@ -27,7 +27,7 @@ export class LeadService extends ResourceService {
          * @TODO find out why this needs to be any
          * for heroku success
          */
-        const aLead: any = new Lead({
+        const aLead: ILead = new Lead({
             id: uuid.v4(),
             email: params.email,
             name: params.name,

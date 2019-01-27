@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@litstack/core": "^0.8.0",
+    "@sendgrid/mail": "^6.3.1",
     "crypto": "^1.0.1",
     "dotenv": "^6.2.0",
     "jsonwebtoken": "^8.4.0",

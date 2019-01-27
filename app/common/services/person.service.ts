@@ -48,7 +48,11 @@ export class PersonService extends ResourceService {
          password: string;
          name: string;
      }): Observable<IPerson> {
-        const aPerson: IPerson = new Person({
+        /**
+         * @TODO find out why this needs to be any
+         * for heroku success
+         */
+        const aPerson: any = new Person({
             id: uuid.v4(),
             email: params.email,
             password: params.password ? sha256(params.password) : null,

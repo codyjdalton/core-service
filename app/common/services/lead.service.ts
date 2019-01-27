@@ -20,10 +20,14 @@ export class LeadService extends ResourceService {
      */
     public create(params: {
         email: string;
-        name: string;
+        name: string
         message: string;
     }): Observable<ILead> {
-        const aLead: ILead = new Lead({
+        /**
+         * @TODO find out why this needs to be any
+         * for heroku success
+         */
+        const aLead: any = new Lead({
             id: uuid.v4(),
             email: params.email,
             name: params.name,

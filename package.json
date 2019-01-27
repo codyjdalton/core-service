@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm test && tsc && node dist/app/index.js",
+    "start": "tsc && node dist/app/index.js",
     "test": "nyc mocha test/before-all.ts test/",
-    "watch": "nodemon --exec npm start"
+    "watch:both": "npm test && npm start",
+    "watch": "nodemon --exec npm run watch:both"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@litstack/core": "^0.8.0",
+    "@sendgrid/mail": "^6.3.1",
     "crypto": "^1.0.1",
     "dotenv": "^6.2.0",
     "jsonwebtoken": "^8.4.0",

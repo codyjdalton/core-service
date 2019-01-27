@@ -9,6 +9,8 @@ import * as uuid from 'uuid';
 import { Lead, ILead } from '../../common/models/lead.model';
 import { ResourceService } from './resource.service';
 
+import { truncate } from '../utils/string.util';
+
 @LitService()
 export class LeadService extends ResourceService {
 
@@ -23,15 +25,11 @@ export class LeadService extends ResourceService {
         name: string
         message: string;
     }): Observable<ILead> {
-        /**
-         * @TODO find out why this needs to be any
-         * for heroku success
-         */
         const aLead: ILead = new Lead({
             id: uuid.v4(),
-            email: params.email,
-            name: params.name,
-            message: params.message
+            email: truncate(params.email, 200),
+            name: truncate(params.name, 200),
+            message: truncate(params.message, 400)
         });
 
         return from(aLead.save());

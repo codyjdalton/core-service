@@ -5,14 +5,13 @@ import { LitComponent } from '@litstack/core';
 import { HttpResponse, HttpRequest } from '@litstack/core/dist/http';
 import { PostMapping } from '@litstack/core/dist/http/mappings';
 
-import { PersonService } from '../../common/services/person.service';
 import { ResourceComponent } from '../../common/components/resource/resource.component.class';
-import { IPerson } from '../../common/models/person.model';
+import { LeadService } from '../../common/services/lead.service';
 
 @LitComponent()
-export class PeopleComponent extends ResourceComponent  {
+export class LeadsComponent extends ResourceComponent  {
 
-    constructor(protected mainService: PersonService) {
+    constructor(protected mainService: LeadService) {
         super();
     }
 
@@ -20,11 +19,11 @@ export class PeopleComponent extends ResourceComponent  {
     createOne(req: HttpRequest, res: HttpResponse) {
         this.mainService.create({
             email: req.body.email,
-            password: req.body.password,
-            name: req.body.name
+            name: req.body.name,
+            message: req.body.message
         })
         .subscribe(
-            person => res.success(person, 201),
+            resource => res.success(resource, 201),
             err => res.errored(400, err)
         );
     }

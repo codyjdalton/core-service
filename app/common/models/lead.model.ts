@@ -16,14 +16,17 @@ export const LeadSchema = new Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     message: {
         type: String,
         required: true,
+        unique: false,
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: false,
     }
 });
 

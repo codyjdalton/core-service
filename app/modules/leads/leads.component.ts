@@ -17,7 +17,8 @@ export class LeadsComponent extends ResourceComponent  {
 
     @PostMapping()
     createOne(req: HttpRequest, res: HttpResponse) {
-        this.mainService.create({
+        res.success(req.body, 201);
+        /*this.mainService.create({
             email: req.body.email,
             name: req.body.name,
             message: req.body.message
@@ -25,6 +26,6 @@ export class LeadsComponent extends ResourceComponent  {
         .subscribe(
             resource => res.success(resource, 201),
             err => res.errored(400, err)
-        );
+        ); */
     }
 }

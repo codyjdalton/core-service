@@ -12,7 +12,7 @@ export abstract class ResourceService {
      * @param {object} params 
      * @return {Observable<Document[]>}
      */
-    public findByParams(params: object): Observable<any[]> {
+    public findByParams(params: object): Observable<any> {
         return from(
             this.model.find(params)
         );

@@ -4,11 +4,9 @@ import * as mongoose from 'mongoose';
 
 import { AppConstants } from './app.constants';
 import { AppModule } from './app.module';
-
-mongoose.set('useCreateIndex', true);
+/*
 mongoose.connect(
-    AppConstants.DATASOURCE,
-    { useNewUrlParser: true }
-);
+    AppConstants.DATASOURCE
+); */
 
 LitCompiler.bootstrap(AppModule, process.env.PORT);
